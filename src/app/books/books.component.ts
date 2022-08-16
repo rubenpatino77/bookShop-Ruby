@@ -1,15 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
-
-interface Book {
-  name: string;
-
-  author: string;
-
-  img: string;
-
-  amount: number;
-}
+import { Book } from '../types/Book';
 
 @Component({
   selector: 'app-books',
@@ -37,6 +28,26 @@ export class BooksComponent implements OnInit {
       img : "https://m.media-amazon.com/images/I/91WFb-PpoNL._AC_UY218_.jpg",
 
       amount: 921
+    },
+
+    {
+      name: 'Art of Computer Programming',
+
+      author: 'Donald John Fuller',
+
+      img: 'https://images-na.ssl-images-amazon.com/images/I/41YakMLJktL._SX218_BO1,204,203,200_QL40_ML2_.jpg',
+
+      amount: 1234
+    },
+
+    {
+      name: 'Introduction to Algorithms',
+
+      author: 'T Cormen',
+
+      img: 'https://m.media-amazon.com/images/I/61EHexGRI8L._AC_UY218_.jpg',
+
+      amount: 771
     }
   ]
 
