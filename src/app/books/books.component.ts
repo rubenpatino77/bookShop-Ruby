@@ -51,6 +51,12 @@ export class BooksComponent implements OnInit {
     }
   ]
 
+  addToCart(event: Book) {
+    alert(event.name);
+  }
+
+  card: Book[] = [];
+
   
 
   isShowing: boolean = true;
