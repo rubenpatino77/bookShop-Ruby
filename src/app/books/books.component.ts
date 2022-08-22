@@ -10,13 +10,7 @@ import { BooksService } from './books.service';
 })
 export class BooksComponent implements OnInit {
 
-  books: Book[] = [];
-
-  addToCart(event: Book) {
-    alert(event.name);
-  }
-
-  card: Book[] = [];  
+  books: Book[] = []; 
 
   isShowing: boolean = true;
 
