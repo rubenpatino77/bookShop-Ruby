@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { BooksModule } from './books/books.module';
 import { CartComponent } from './cart/cart.component';
 import { AuthModule } from './auth/auth.module';
+import { BooksService } from './books/books.service';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { AuthModule } from './auth/auth.module';
     BooksModule,
     AuthModule
   ],
+  providers: [BooksService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
