@@ -4,7 +4,7 @@
         #myForm="ngForm">
 
         <h1 class="text-center text-xl">Register</h1>
-        
+
         <div class="my-5 w-full">
             <label for="email">Email</label>
             <input type="email" 
@@ -52,9 +52,16 @@
         </div>
 
         <div class="my-5 w-full">
-            <input type="submit" 
-                class="p-2 w-full bg-yellow-600 text-white hover:bg-yellow-900 rounded"
-                [disabled]="myForm.form.invalid">
+            <button type="submit" 
+            class="p-2 w-full bg-purple-700 text-white hover:bg-purple-900 rounded"
+            [disabled]="myForm.form.invalid">
+                <ng-container *ngIf="isLoading()">
+                    Loading...
+                </ng-container>
+                <ng-container *ngIf="!isLoading()">
+                    Submit
+                </ng-container>
+            </button>
         </div>
     </form>
 </div>

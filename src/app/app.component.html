@@ -3,10 +3,14 @@
       <a routerLink="/">Book Shop</a>
   </div>
   <div>
-      <a class="mx-4" routerLink="/cart"> My Cart</a>
+    <a class="mx-4" routerLink="/cart"> My Cart</a>
+    <ng-container *ngIf="!isAuthenticated()">
       <a class="mx-4" routerLink="/login">Login</a>
       <a class="mx-4" routerLink="/register">Register</a>
-      <a class="mx-4" routerLink="/logout">Logout</a>
+    </ng-container>
+    <ng-container *ngIf="isAuthenticated()">
+      <button (click)="logout()" class="mx-4" routerLink="/logout">Logout</button>
+    </ng-container>
   </div>
 </nav>
 <div class="p-4">
