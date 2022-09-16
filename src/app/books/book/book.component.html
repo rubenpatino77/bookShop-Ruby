@@ -2,7 +2,7 @@
     <img [src]="book.img" [alt]="book.name" width="100" class="m-auto rounded-sm"/>
     <div class="m-auto">
         <p class="text-lg">{{ book.name | titlecase}} by {{ book.author | titlecase }}</p>
-        <p class="my-4">{{ book.amount  }}</p>
+        <p class="my-4">{{ book.amount | currency }}</p>
         <button class="bg-yellow-400 rounded p-3" *ngIf="!isInCart" (click)="addToCart()">Add to Cart</button>
         <button class="bg-yellow-400 rounded p-3" *ngIf="isInCart" (click)="removeFromCart()">Remove from cart</button>
     </div>
