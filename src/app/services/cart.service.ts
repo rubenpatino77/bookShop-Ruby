@@ -1,10 +1,12 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable, Output } from '@angular/core';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { Book } from '../types/Book';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
+
   cart: Book[] = [];
 
   constructor() { }
@@ -20,4 +22,5 @@ export class CartService {
   getCart() {
     return this.cart;
   }
+
 }
