@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { initializeApp } from 'firebase/app';
 import { AuthService } from './auth/auth.service';
 import { firebaseConfig } from './firebase.config';
+import { CartService } from './services/cart.service';
 
 @Component({
   selector: 'app-root',
@@ -10,10 +11,10 @@ import { firebaseConfig } from './firebase.config';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private authService: AuthService){}
+  constructor(private authService: AuthService, private cartService: CartService){}
 
   ngOnInit(): void {
-    initializeApp(firebaseConfig)
+    initializeApp(firebaseConfig);
   }
 
   title = 'bookShop';
@@ -25,4 +26,9 @@ export class AppComponent implements OnInit {
   logout() {
     this.authService.logout();
   }
+
+  getCart(){
+    return this.cartService.getCart();
+  }
+  
 }

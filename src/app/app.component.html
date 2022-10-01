@@ -3,7 +3,10 @@
       <a routerLink="/">Book Shop</a>
   </div>
   <div>
-    <a class="mx-4" routerLink="/cart"> My Cart</a>
+    <div class="inline-block relative">
+      <a class="mx-4" routerLink="/cart"> My Cart</a>
+      <p *ngIf="getCart().length > 0" class="inline-block absolute right-1 bottom-1/4 text-yellow-400">{{ getCart().length }}</p>
+    </div>
     <ng-container *ngIf="!isAuthenticated()">
       <a class="mx-4" routerLink="/login">Login</a>
       <a class="mx-4" routerLink="/register">Register</a>

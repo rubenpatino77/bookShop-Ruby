@@ -1,7 +1,10 @@
-<p>cart works!</p>
+
+<h1>Your Cart</h1>
+
 <div *ngIf="getCart().length > 0">
     <div *ngFor="let book of getCart()">
-        <p class="my-4 text-2xl">{{ book.name }}</p>
+        <p class="my-4 text-2xl inline-block">{{ book.name }} by {{ book.author }}</p>
+        <button class="p-4 absolute right-1/2 " (click)="removeFromCart(book)">Remove Book</button>
     </div>
 </div>
 <div *ngIf="getCart().length == 0">No books in your cart.</div>
