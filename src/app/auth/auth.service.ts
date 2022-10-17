@@ -12,19 +12,20 @@ export class AuthService {
 
   isAuthenticated: boolean = false;
   isLoading: boolean = false;
+  currentUserEmail: string = "";
 
 
-  login(form: LoginForm) {
+  async login(form: LoginForm) {
     if(this.isLoading) { return;}
     this.isLoading = true;
 
     const auth = getAuth();
-    signInWithEmailAndPassword(auth, form.email, form.password)
+    await signInWithEmailAndPassword(auth, form.email, form.password)
       .then((userCredential) => {
         // Signed in 
         this.isAuthenticated = true;
+        this.currentUserEmail = form.email;
         this.router.navigate(['']);
-
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -36,7 +37,7 @@ export class AuthService {
   }
 
 
-  register(form: RegisterForm) {
+  async register(form: RegisterForm) {
     if(this.isLoading) { return;}
     this.isLoading = true;
     
@@ -46,10 +47,11 @@ export class AuthService {
     }
 
     const auth = getAuth();
-    createUserWithEmailAndPassword(auth, form.email, form.password)
+    await createUserWithEmailAndPassword(auth, form.email, form.password)
       .then((userCredential) => {
         // Signed in 
         //const user = userCredential.user;
+        this.currentUserEmail = form.email;
         this.isAuthenticated = true;
         alert("Account has been created successfully");
         
@@ -64,11 +66,12 @@ export class AuthService {
   }
 
 
-  logout() {
+  async logout() {
     const auth = getAuth();
-    signOut(auth).then(() => {
-      this.router.navigate(['login']);
+    await signOut(auth).then(() => {
       this.isAuthenticated = false;
+      this.currentUserEmail="";
+      this.router.navigate(['login']);
     }).catch((error) => {
       alert("There was an error trying to sign out.");
     });
