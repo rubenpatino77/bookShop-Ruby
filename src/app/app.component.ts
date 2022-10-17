@@ -3,6 +3,11 @@ import { initializeApp } from 'firebase/app';
 import { AuthService } from './auth/auth.service';
 import { firebaseConfig } from './firebase.config';
 import { CartService } from './services/cart.service';
+import { DbService } from './services/db.service';
+import { getFirestore } from "firebase/firestore";
+import { BookComponent } from './books/book/book.component';
+import { Book } from './types/Book';
+
 
 @Component({
   selector: 'app-root',
@@ -11,10 +16,13 @@ import { CartService } from './services/cart.service';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private authService: AuthService, private cartService: CartService){}
+  constructor(private authService: AuthService, private cartService: CartService, private dbService: DbService){}
 
-  ngOnInit(): void {
-    initializeApp(firebaseConfig);
+  app: any;
+  db: any;
+  async ngOnInit(): Promise<void> {
+    this.app = initializeApp(firebaseConfig);
+    this.db = getFirestore(this.app);
   }
 
   title = 'bookShop';
@@ -23,7 +31,9 @@ export class AppComponent implements OnInit {
     return this.authService.isAuthenticated;
   }
 
-  logout() {
+  async logout() {
+    await this.dbService.addData(this.db, this.authService.currentUserEmail, this.getCart());
+    this.cartService.clearCart();
     this.authService.logout();
   }
 

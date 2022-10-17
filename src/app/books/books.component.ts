@@ -1,5 +1,9 @@
 
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AppComponent } from '../app.component';
+import { AuthService } from '../auth/auth.service';
+import { CartService } from '../services/cart.service';
+import { DbService } from '../services/db.service';
 import { Book } from '../types/Book';
 import { BooksService } from './books.service';
 
@@ -14,9 +18,9 @@ export class BooksComponent implements OnInit {
 
   isShowing: boolean = true;
 
-  constructor(private booksService: BooksService) {   }
+  constructor(private booksService: BooksService ) {   }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.books = this.booksService.getBooks();
   }
 

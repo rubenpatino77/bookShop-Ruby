@@ -6,6 +6,7 @@ import { BooksModule } from './books/books.module';
 import { CartComponent } from './cart/cart.component';
 import { AuthModule } from './auth/auth.module';
 import { BooksService } from './books/books.service';
+import { DbService } from './services/db.service';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { BooksService } from './books/books.service';
     BooksModule,
     AuthModule
   ],
-  providers: [BooksService],
+  providers: [BooksService, DbService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
