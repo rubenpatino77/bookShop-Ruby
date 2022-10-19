@@ -54,7 +54,7 @@ export class AuthService {
         this.currentUserEmail = form.email;
         this.isAuthenticated = true;
         alert("Account has been created successfully");
-        
+        this.router.navigate(['']);
       })
       .catch((error) => {
         const errorCode = error.code;
